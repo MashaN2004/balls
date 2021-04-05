@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.ball{
+			background: red;
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			border-radius: 50px;
+			transition: 1s;
+		}
+	</style>
+</head>
+<body>
+	<h1>Score: <span class="score"></span></h1>
+	<div class="ball" style="left: 200px; top: 100px;">
+		
+	</div>
+	<div class="ball" style="left: 300px; top: 400px;">
+		
+	</div>
+	<div class="ball"style="left: 400px; top: 600px;">
+		
+	</div>
+	<div class="ball"style="left: 500px; top: 800px;">
+		
+	</div>
+	<div class="ball"style="left: 250px; top: 300px;">
+		
+	</div>
+	<div class="ball"style="left: 270px; top: 600px;">
+		
+	</div>
+	<div class="ball"style="left: 600px; top: 200px;">
+		
+	</div>
+	<div class="ball"style="left: 900px; top: 100px;">
+		
+	</div>
+	<div class="ball"style="left: 1000px; top: 500px;">
+		
+	</div>
+	<div class="ball"style="left: 1200px; top: 800px;">
+		
+	</div>
+	<div class="ball"style="left: 400px; top: 230px;">
+		
+	</div>
+	<div class="ball"style="left: 200px; top: 810px;">
+		
+	</div>
+	<div class="ball"style="left: 200px; top: 750px;">
+		
+	</div>
+	<div class="ball"style="left: 600px; top: 120px;">
+		
+	</div>
+	<div class="ball"style="left: 800px; top: 460px;">
+		
+	</div>
+	<div class="ball"style="left: 1230px; top: 300px;">
+		
+	</div>
+
+
+
+	<script type="text/javascript">
+		let score = 0;
+		document.querySelector('.score').innerHTML = score;
+		let balls = document.querySelectorAll('.ball');
+		let left = 100;
+		let topBall = 100;
+		let big = 100;
+		let small = 100;
+
+		function show(){
+			player.style.display = "block";
+		}
+		function moveLeft() {
+			left = left + 10;
+			for (let i = 0; i < 8; i=i+1) {
+				balls[i].style.left = left*i + 'px';
+
+			}
+		}
+		function moveTop() {
+			topBall = topBall + 20;
+			for (let i = 8; i < 16; i=i+1) {
+				balls[i].style.top = topBall + 'px';
+
+			}
+
+		}
+		function change1(){
+			big = big + 5;
+			for (let i = 0; i < 8; i=i+1) {
+				balls[i].style.height = big+ 'px';
+				balls[i].style.width = big + 'px';
+				
+			}
+		}
+		function change2(){
+			small = small - 10;
+			for (let i = 8; i < 16; i=i+1) {
+				balls[i].style.height = small + 'px';
+				balls[i].style.width = small + 'px';
+				
+			}
+		}
+		for (let i = 0; i < 16; i=i+1) {
+			balls[i].onclick = function(){
+				balls[i].style.background = "grey"
+				score = score + 1;
+				document.querySelector('.score').innerHTML = score;
+				balls[i].style.display= "none"
+				if (score == 16) {
+				alert('win')
+				}
+			}
+			
+		}
+		function looser(){
+			alert('looser')
+		}
+
+		setInterval(moveTop, 1000);
+		setInterval(moveLeft, 1000);
+		setInterval(change1, 1000);
+		setInterval(change2, 1000);
+		setTimeout(looser, 15000)
+	</script>
+</body>
+</html>
